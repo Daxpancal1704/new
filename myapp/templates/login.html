@@ -1,0 +1,51 @@
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Classic Login Form Example</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Assistant:400,700" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="{% static 'myapp\css\login.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+  <section class='login' id='login'>
+    <div class='head'>
+    <h1 class='company'>Login</h1>
+    </div>
+    <div class='form'>
+    <form action="{% url 'login' %}" method="post" >
+      
+    {% csrf_token %}
+
+    {% if eid %}
+    <div class="alert alert-danger" role="alert">
+    {{eid}}
+    </div>
+
+    {% endif %}
+
+    {% if pid %}
+    <div class="alert alert-danger" role="alert">
+    {{pid}}
+    </div>
+    {% endif %}
+    <div class="row">
+
+    <input type="text" placeholder='email' name="email" class='text' id='userid' required><br>
+    
+    <input type="password" placeholder='••••••••••••••' class='password' name="password"><br><br>
+    <a href="#"   id='do-login'><input type="submit" class="btn-login" value="submit"></a>
+   <br><br><a href="{% url 'forget_password' %}" class='forgot'>Forgot?</a><br>
+   <a href="{% url 'register' %}" class='forgot1' >Register?</a><br>
+    </form>
+    </div>
+  </section>
+
+<!-- partial -->
+  <script  src="{% static 'myapp\js\main.js' %}"></script>
+
+</body>
+</html>
+

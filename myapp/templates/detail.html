@@ -1,0 +1,81 @@
+{% extends "index.html" %}
+
+{% load static %}
+{% block  content %}
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="{% url 'index' %}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Shop Detail</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Shop Detail Start -->
+    <div class="container-fluid py-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-5 pb-5">
+                <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner ">
+                        <div class="carousel-item active">
+                            <img style="height:500px; margin-left: 140px;" src="{{vid.pic.url}}" alt="Image">
+                        </div>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="col-lg-7 pb-5">
+                <h3 class="font-weight-semi-bold">{{vid.name}}</h3>
+                <br>
+                <h5 class="font-weight-semi-bold mb-4"> ₹{{vid.offer}}</h5>
+
+                <h6 class="font-weight-semi-bold mb-4" style="text-decoration: line-through;">₹{{vid.price}}</h6>
+                <p class="mb-4">{{vid.descriptions}}</p>
+                <div class="d-flex mb-3">
+                    <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
+                    <form>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <label class="custom-control" for="size-1">{{vid.size}}</label>
+                        </div>
+                        
+                    </form> 
+                </div>
+               
+                <div class="d-flex align-items-center mb-4 pt-2">
+                    
+                   <a href="{% url 'add_to_cart' vid.id %}"> <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button></a>
+                </div>
+               
+            </div>
+        </div>
+        <div class="row px-xl-5">
+            <div class="col">
+                <div class="nav nav-tabs justify-content-center border-secondary mb-4">
+                    <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
+                   
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-pane-1">
+                        <h4 class="mb-3">Product Description</h4>
+                        <p>{{vid.descriptions}}</p>
+                    </div>
+                   
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shop Detail End -->
+
+</div>
+</div>
+</div>
+
+    {% endblock  %}
